@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Command Shortcut V5.5 — Reverse Engineering + Visual AI</title>
+<link rel="stylesheet" href="assets/styles.css">
+
+</head>
+<body>
+<header class="topbar"><div class="topinner">
+<div class="brand"><div class="logo">&gt;_</div><div><b>Command Shortcut V5.5 + AI</b><small>Commands · Analysis · Crosscheck · Reverse · AI</small></div></div>
+<div class="searchbox"><span>⌕</span><input id="search" placeholder="Search: adb, grep, Ctrl+P, Python, React, selector…"><button class="clearsearch" id="clearSearch">×</button></div>
+<button class="iconbtn" id="shareBtn" title="Share handbook">↗</button><button class="iconbtn" id="randomBtn" title="Random learning card">⚄</button>
+</div></header>
+<div class="backdrop" id="backdrop"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar"><div class="sidehead"><div><b>Categories</b><small id="sideState">Auto-hide enabled</small></div><button class="sideclose" id="sideClose">×</button></div><div class="sidecategories" id="categories"></div>
+  <div class="sideconfirm">
+    <div class="sidepreview"><span>Preview</span><b id="sidePreview">All topics</b></div>
+    <button id="sideApply" class="sideapply">Apply & Close</button>
+  </div>
+</aside>
+<main class="main">
+<section class="hero compactHero"><div class="stats"><div class="stat"><b id="visibleCount">0</b><span>shown</span></div><div class="stat"><b id="totalCount">0</b><span>total cards</span></div><div class="stat"><b id="catCount">0</b><span>categories</span></div><div class="stat"><b id="docCount">0</b><span>from uploads</span></div></div></section>
+<div class="topic-ribbon" id="topicRibbon"></div><div class="controlrow"><button class="control active" data-view="cards">▦ Cards</button><button class="control" data-view="compact">☷ Compact</button><button class="control" data-view="focus">◎ Learn one</button><button class="control" id="docOnly">📄 Uploaded notes</button><button class="control" id="securityOnly">🛡 Security lab</button><button class="control" id="v3Only">🧭 V3 Deep</button><select class="level-select" id="levelFilter" aria-label="Level filter"><option value="">All levels</option><option>Basic</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select><button class="control" id="resetBtn">↺ Reset</button></div>
+<div class="focusbar"><button id="prevFocus">← Previous</button><span id="focusPos">0 / 0</span><button id="nextFocus">Next →</button></div>
+<section class="grid" id="grid"></section><div class="empty" id="empty">No match. Try a broader search or press Reset.</div>
+<div class="footer">Command Shortcut V5.5 + AI · Reverse I/O Evidence · Visualizer · Code Studio · Virtual Test</div>
+</main></div>
+<nav class="dock"><button class="dockbtn" id="catDock"><span class="ico">☰</span><span>Categories</span></button><button class="dockbtn" id="viewDock"><span class="ico">▦</span><span id="viewDockLabel">Cards</span></button><button class="dockbtn active" id="autoDock"><span class="ico">◴</span><span id="autoLabel">Auto On</span></button><button class="dockbtn" id="topDock"><span class="ico">↑</span><span>Top</span></button><button class="dockbtn" id="themeDock"><span class="ico">◐</span><span>Theme</span></button></nav>
+<div class="toast" id="toast"></div>
+<div class="share-menu" id="shareMenu">
+  <div class="share-title"><b>Share</b><button id="shareClose">×</button></div>
+  <button data-share="native">↗ Native share</button>
+  <button data-share="summary">▤ Copy summary</button>
+  <button data-share="link">🔗 Copy page link</button>
+  <div class="share-note">For downloaded/local pages, another app may not be able to reopen the local file URL. Sharing summary text is the most reliable fallback.</div>
+</div>
+
+<button class="ai-bubble" id="aiBubble" aria-label="Open AI assistant" title="AI Assistant"><span class="bubble-icon">✦</span><span class="bubble-resize" id="aiBubbleResize" title="Resize bubble"></span></button>
+<section class="ai-panel" id="aiPanel" aria-label="AI assistant">
+  <div class="ai-head" id="aiHead">
+    <div><b>✦ Command AI Assistant</b><small>Offline retrieval + guided analysis</small></div>
+    <div class="spacer"></div>
+    <button id="aiFontDown" title="Smaller text">A−</button>
+    <button id="aiFontUp" title="Larger text">A+</button>
+    <button id="aiShare" title="Share assistant answer">↗</button>
+    <button id="aiFull" title="Full page assistant">⛶</button>
+    <button id="aiClear" title="Clear">↺</button>
+    <button id="aiClose" title="Close">×</button>
+  </div>
+  <div class="ai-context" id="aiContext">Context: all handbook cards</div>
+  <div class="ai-messages" id="aiMessages"></div>
+  <div class="ai-suggest" id="aiSuggest"></div>
+  <div class="ai-input"><textarea id="aiText" placeholder="Ask: summary, analyse this command, reverse flow, crossfunction, root/jailbreak detection, LLM jailbreak defence…"></textarea><button id="aiSend">Send</button></div>
+  <div class="ai-note">Local/offline assistant: answers from this handbook using retrieval + rule-based guided flows. It does not call a remote model.</div>
+  <div class="ai-resize" id="aiResize" title="Resize assistant"></div>
+</section>
+<section class="code-studio" id="codeStudio">
+  <div class="studio-head">
+    <div><b>⌘ Code Studio</b><small>Local templates + sandboxed HTML/CSS/JS test</small></div>
+    <div class="spacer"></div>
+    <button id="studioFull" title="Full page">⛶</button>
+    <button id="studioClose" title="Close">×</button>
+  </div>
+  <div class="studio-tools">
+    <select id="studioLang" aria-label="Language">
+      <option value="javascript">JavaScript</option>
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="python">Python</option>
+      <option value="bash">Bash</option>
+      <option value="powershell">PowerShell</option>
+      <option value="php">PHP</option>
+      <option value="sql">SQL</option>
+      <option value="java">Java</option>
+      <option value="kotlin">Kotlin</option>
+      <option value="c">C</option>
+      <option value="cpp">C++</option>
+    </select>
+    <input id="studioTask" placeholder="Describe code: validate JSON, parse logs, responsive card…">
+    <button id="studioGenerate">Draft</button>
+  </div>
+  <textarea id="studioCode" spellcheck="false" placeholder="Generated or pasted code appears here…"></textarea>
+  <div class="studio-actions">
+    <button id="studioCopy">Copy code</button>
+    <button id="studioExplain">Explain</button>
+    <button id="studioTest">Virtual test</button>
+    <button id="studioClear">Clear</button>
+  </div>
+  <div class="studio-output" id="studioOutput">Ready. HTML/CSS/JavaScript can run in a network-blocked sandbox. Other languages use structural virtual checks only.</div>
+  <iframe id="studioFrame" sandbox="allow-scripts" title="Sandbox preview"></iframe>
+</section>
+<section class="viz-panel" id="vizPanel">
+  <div class="viz-head">
+    <div><b>◈ Analysis Visualizer</b><small>Flow · Cross-function · Evidence · Reverse trace</small></div>
+    <div class="spacer"></div>
+    <button id="vizFull" title="Full page">⛶</button>
+    <button id="vizClose" title="Close">×</button>
+  </div>
+  <div class="viz-tools">
+    <select id="vizMode">
+      <option value="flow">Input / Output Flow</option>
+      <option value="cross">Cross-function</option>
+      <option value="reverse">Reverse Trace</option>
+      <option value="evidence">Evidence Map</option>
+    </select>
+    <input id="vizTopic" placeholder="Topic or question…">
+    <button id="vizBuild">Visualize</button>
+  </div>
+  <div class="viz-canvas" id="vizCanvas"></div>
+  <div class="viz-note" id="vizNote">Select a card or enter a topic. Visualization is generated locally from handbook evidence and structured analysis rules.</div>
+</section>
+
+
+
+<script src="assets/app.js" defer></script>
+
+</body></html>

@@ -8,4 +8,5 @@ Command Shortcut V5.5 + AI, refactored for static hosting.
 - `assets/app.js` — handbook data and application logic
 
 ## Hosting
-Static-site compatible with GitHub Pages and Cloudflare Pages.
+This repository is static-site compatible with GitHub Pages and Cloudflare Pages.
+For Cloudflare Pages use no build command and `/` as the output/root directory.
